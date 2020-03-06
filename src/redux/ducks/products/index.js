@@ -1,11 +1,11 @@
 // 1. imports
 import axios from "axios"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 
 // 2. action definitions
+
 const GET_PRODUCTS = "products/GET_PRODUCTS"
-const SET_COUNT = "products/SET_COUNT"
 
 // 3. initial state
 const initialState = {
@@ -23,28 +23,34 @@ export default (state = initialState, action) => {
 }
 
 // 5. action creators
-function getProducts() {
-  return dispatch => {
-    axios.get("/products").then(resp => {
-      console.log(resp)
-      dispatch(getCount())
-      dispatch({
-        type: GET_PRODUCTS,
-        payload: resp.data
+//go get the products
+export function getProducts() {
+  return new Promise((resolve, reject) => {
+    axios
+      .get("/products")
+      .then(resp => {
+        resolve(resp.data)
+        console.log(resp.data)
       })
-    })
-  }
+      .catch(e => {
+        reject()
+      })
+  })
 }
 
-function getCount() {
-  return dispatch => {
-    axios.get("/products").then(resp => {
-      dispatch({
-        type: SET_COUNT,
-        payload: resp.data.length
+//when i click on the product i should see a overview
+export function getProductView(id) {
+  return new Promise((resolve, reject) => {
+    axios
+      .get(`./product/${id}?_embed=products`)
+      .then(resp => {
+        resolve(resp.data)
+        console.log(resp.data)
       })
-    })
-  }
+      .catch(e => {
+        reject()
+      })
+  })
 }
 
 // 6. custom hook

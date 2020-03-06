@@ -1,4 +1,36 @@
-.grid {
+.products {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  width: 90%;
+}
+
+.products img {
+  max-width: 200px;
+}
+
+.productContainer {
+  display: flex;
+}
+
+.product {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  max-width: 200px;
+}
+
+.cart {
+  padding: 10px;
+  width: 400px;
+}
+
+img {
+  height: 300px;
+  width: 200px;
+}
+
+hr {
+  height: 2px;
+  width: 10%;
+  color: yellow;
 }

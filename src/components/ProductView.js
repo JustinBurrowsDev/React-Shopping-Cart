@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getProductView } from "../actions/product.js"
+import { getProductView } from "../hooks"
 
 export default props => {
   const [productView, setProductView] = useState([])

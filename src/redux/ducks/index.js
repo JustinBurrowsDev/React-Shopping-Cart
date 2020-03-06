@@ -1,1 +1,2 @@
-export { default as productState } from "./product/actions"
+export { default as productState } from "./products/index"
+export { default as cartState } from "./cart/index"
